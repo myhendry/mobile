@@ -33,6 +33,12 @@ class SideMenu extends Component {
           </Text>
           <Text
             style={styles.menuItem}
+            onPress={() => this.props.navigation.navigate("Form")}
+          >
+            Form
+          </Text>
+          <Text
+            style={styles.menuItem}
             onPress={() => this.props.navigation.navigate("Conditional")}
           >
             Conditional

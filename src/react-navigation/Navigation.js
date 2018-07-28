@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, Button } from "react-native";
+import { View, Text, Button } from "react-native";
 import {
   createStackNavigator,
   createDrawerNavigator,
@@ -14,6 +14,7 @@ import ImageScreen from "../images/ImageScreen";
 import ContextScreen from "../context/ContextScreen";
 import ConditionalScreen from "../conditional/Main";
 import HierarchyScreen from "../receiveProps/HierarchyScreen";
+import FormScreen from "../formik/FormScreen";
 import SideMenu from "../drawer/SideMenu";
 
 const MainStack = createStackNavigator({
@@ -36,6 +37,21 @@ const ImageStack = createStackNavigator({
     screen: ImageScreen,
     navigationOptions: ({ navigation }) => ({
       title: "IMAGE",
+      headerStyle: {
+        backgroundColor: "yellow"
+      },
+      headerLeft: (
+        <Button title="OPEN" onPress={() => navigation.openDrawer()} />
+      )
+    })
+  }
+});
+
+const FormStack = createStackNavigator({
+  Form: {
+    screen: FormScreen,
+    navigationOptions: ({ navigation }) => ({
+      title: "FORMIK",
       headerStyle: {
         backgroundColor: "yellow"
       },
@@ -139,6 +155,12 @@ export default createDrawerNavigator(
       screen: ContextStack,
       navigationOptions: () => ({
         title: "CONTEXT"
+      })
+    },
+    Form: {
+      screen: FormStack,
+      navigationOptions: () => ({
+        title: "FORM"
       })
     },
     Hierarchy: {
