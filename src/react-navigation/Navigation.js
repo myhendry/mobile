@@ -10,12 +10,17 @@ import { Foundation } from "@expo/vector-icons";
 import MainScreen from "../_dir/MainScreen";
 import AboutScreen from "../_dir/AboutScreen";
 import StateScreen from "../apollo-link-state/StateScreen";
-import ImageScreen from "../images/ImageScreen";
 import ContextScreen from "../context/ContextScreen";
+import ReduxScreen from "../redux/ReduxScreen";
+import ImageScreen from "../images/ImageScreen";
 import ConditionalScreen from "../conditional/Main";
 import HierarchyScreen from "../receiveProps/HierarchyScreen";
 import FormScreen from "../formik/FormScreen";
 import RNFormScreen from "../formik/RNFormScreen";
+import NonStringScreen from "../non_string/NonStringScreen";
+import AnimationScreen from "../animation/AnimationScreen";
+import PaginationScreen from "../pagination/PaginationScreen";
+import PubSubScreen from "../pubsub/PubSubScreen";
 import SideMenu from "../drawer/SideMenu";
 
 const MainStack = createStackNavigator({
@@ -47,6 +52,48 @@ const ImageStack = createStackNavigator({
     })
   }
 });
+const PaginationStack = createStackNavigator({
+  Paginate: {
+    screen: PaginationScreen,
+    navigationOptions: ({ navigation }) => ({
+      title: "PAGINATE",
+      headerStyle: {
+        backgroundColor: "yellow"
+      },
+      headerLeft: (
+        <Button title="OPEN" onPress={() => navigation.openDrawer()} />
+      )
+    })
+  }
+});
+const PubSubStack = createStackNavigator({
+  MyPubSub: {
+    screen: PubSubScreen,
+    navigationOptions: ({ navigation }) => ({
+      title: "PUB SUB",
+      headerStyle: {
+        backgroundColor: "yellow"
+      },
+      headerLeft: (
+        <Button title="OPEN" onPress={() => navigation.openDrawer()} />
+      )
+    })
+  }
+});
+const AnimationStack = createStackNavigator({
+  Anime: {
+    screen: AnimationScreen,
+    navigationOptions: ({ navigation }) => ({
+      title: "ANIMATION",
+      headerStyle: {
+        backgroundColor: "yellow"
+      },
+      headerLeft: (
+        <Button title="OPEN" onPress={() => navigation.openDrawer()} />
+      )
+    })
+  }
+});
 
 const FormStack = createStackNavigator({
   Form: {
@@ -68,6 +115,21 @@ const RNFormStack = createStackNavigator({
     screen: RNFormScreen,
     navigationOptions: ({ navigation }) => ({
       title: "FORMIK",
+      headerStyle: {
+        backgroundColor: "yellow"
+      },
+      headerLeft: (
+        <Button title="OPEN" onPress={() => navigation.openDrawer()} />
+      )
+    })
+  }
+});
+
+const NonStringStack = createStackNavigator({
+  NonString: {
+    screen: NonStringScreen,
+    navigationOptions: ({ navigation }) => ({
+      title: "NON - STRING",
       headerStyle: {
         backgroundColor: "yellow"
       },
@@ -138,6 +200,21 @@ const ContextStack = createStackNavigator({
   }
 });
 
+const ReduxStack = createStackNavigator({
+  MyRedux: {
+    screen: ReduxScreen,
+    navigationOptions: ({ navigation }) => ({
+      title: "REDUX",
+      headerStyle: {
+        backgroundColor: "yellow"
+      },
+      headerLeft: (
+        <Button title="OPEN" onPress={() => navigation.openDrawer()} />
+      )
+    })
+  }
+});
+
 const AboutStack = createStackNavigator({
   About: {
     screen: AboutScreen,
@@ -173,6 +250,12 @@ export default createDrawerNavigator(
         title: "CONTEXT"
       })
     },
+    Redux: {
+      screen: ReduxStack,
+      navigationOptions: () => ({
+        title: "REDUX"
+      })
+    },
     Form: {
       screen: FormStack,
       navigationOptions: () => ({
@@ -191,6 +274,12 @@ export default createDrawerNavigator(
         title: "HIERARCHY"
       })
     },
+    NonString: {
+      screen: NonStringStack,
+      navigationOptions: () => ({
+        title: "NON - STRING"
+      })
+    },
     Conditional: {
       screen: ConditionalStack,
       navigationOptions: () => ({
@@ -203,6 +292,24 @@ export default createDrawerNavigator(
         title: "IMAGE"
       })
     },
+    Anime: {
+      screen: AnimationStack,
+      navigationOptions: () => ({
+        title: "ANIMATION"
+      })
+    },
+    MyPubSub: {
+      screen: PubSubStack,
+      navigationOptions: () => ({
+        title: "PUB SUB"
+      })
+    },
+    Paginate: {
+      screen: PaginationStack,
+      navigationOptions: () => ({
+        title: "PAGINATION"
+      })
+    },
     About: {
       screen: AboutStack,
       navigationOptions: () => ({
@@ -212,6 +319,7 @@ export default createDrawerNavigator(
   },
   {
     contentComponent: SideMenu,
-    drawerWidth: 250
+    drawerWidth: 200,
+    drawerBackgroundColor: "yellow"
   }
 );

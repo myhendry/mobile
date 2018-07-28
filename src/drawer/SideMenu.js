@@ -1,67 +1,67 @@
 import React, { Component } from "react";
 import { NavigationActions } from "react-navigation";
-import { View, Text, StyleSheet } from "react-native";
+import { ScrollView, View, Text, StyleSheet } from "react-native";
 
 class SideMenu extends Component {
   render() {
-    return (
-      <View style={styles.container}>
-        <View style={styles.upperContainer}>
-          <Text
-            style={styles.menuItem}
-            onPress={() => this.props.navigation.navigate("Main")}
-          >
-            Main
-          </Text>
-          <Text
-            style={styles.menuItem}
-            onPress={() => this.props.navigation.navigate("State")}
-          >
-            State
-          </Text>
-          <Text
-            style={styles.menuItem}
-            onPress={() => this.props.navigation.navigate("Context")}
-          >
-            Context
-          </Text>
-          <Text
-            style={styles.menuItem}
-            onPress={() => this.props.navigation.navigate("Hierarchy")}
-          >
-            Hierarchy
-          </Text>
-          <Text
-            style={styles.menuItem}
-            onPress={() => this.props.navigation.navigate("Form")}
-          >
-            Form
-          </Text>
-          <Text
-            style={styles.menuItem}
-            onPress={() => this.props.navigation.navigate("RNForm")}
-          >
-            React Native Form
-          </Text>
-          <Text
-            style={styles.menuItem}
-            onPress={() => this.props.navigation.navigate("Conditional")}
-          >
-            Conditional
-          </Text>
+    const { header, menu, menuItem, container, footer } = styles;
+    const { navigate } = this.props.navigation;
 
-          <Text
-            style={styles.menuItem}
-            onPress={() => this.props.navigation.navigate("Image")}
+    return (
+      <View style={{ flex: 1 }}>
+        <View style={header} />
+        <View style={{ flex: 9 }}>
+          <ScrollView
+            contentContainerStyle={container}
+            overScrollMode="never"
+            bounces={false}
           >
-            Image
-          </Text>
+            <View style={menu}>
+              <Text style={menuItem} onPress={() => navigate("Main")}>
+                Main
+              </Text>
+              <Text style={menuItem} onPress={() => navigate("State")}>
+                State
+              </Text>
+              <Text style={menuItem} onPress={() => navigate("Context")}>
+                Context
+              </Text>
+              <Text style={menuItem} onPress={() => navigate("MyRedux")}>
+                Redux
+              </Text>
+              <Text style={menuItem} onPress={() => navigate("Hierarchy")}>
+                Hierarchy
+              </Text>
+              <Text style={menuItem} onPress={() => navigate("Form")}>
+                Form
+              </Text>
+              <Text style={menuItem} onPress={() => navigate("RNForm")}>
+                React Native Form
+              </Text>
+              <Text style={menuItem} onPress={() => navigate("NonString")}>
+                Non String
+              </Text>
+              <Text style={menuItem} onPress={() => navigate("Conditional")}>
+                Conditional
+              </Text>
+
+              <Text style={menuItem} onPress={() => navigate("Image")}>
+                Image
+              </Text>
+              <Text style={menuItem} onPress={() => navigate("Anime")}>
+                Animation
+              </Text>
+              <Text style={menuItem} onPress={() => navigate("MyPubSub")}>
+                Pubsub
+              </Text>
+              <Text style={menuItem} onPress={() => navigate("Paginate")}>
+                Pagination
+              </Text>
+            </View>
+          </ScrollView>
         </View>
-        <View style={styles.lowerContainer}>
-          <Text
-            style={styles.menuItem}
-            onPress={() => this.props.navigation.navigate("About")}
-          >
+        <View style={footer}>
+          <Text style={menuItem} onPress={() => navigate("About")}>
             About
           </Text>
         </View>
@@ -75,17 +75,23 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "yellow"
   },
-  upperContainer: {
-    flex: 4,
-    paddingTop: 70,
+  header: {
+    flex: 1,
+    zIndex: 2000,
+    backgroundColor: "yellow"
+  },
+  menu: {
+    flex: 6,
     paddingBottom: 10
   },
-  lowerContainer: {
-    flex: 3
+  footer: {
+    flex: 1,
+    paddingTop: 20,
+    backgroundColor: "white"
   },
   menuItem: {
     fontSize: 20,
-    padding: 15
+    padding: 10
   }
 });
 
