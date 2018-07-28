@@ -39,6 +39,12 @@ class SideMenu extends Component {
           </Text>
           <Text
             style={styles.menuItem}
+            onPress={() => this.props.navigation.navigate("RNForm")}
+          >
+            React Native Form
+          </Text>
+          <Text
+            style={styles.menuItem}
             onPress={() => this.props.navigation.navigate("Conditional")}
           >
             Conditional

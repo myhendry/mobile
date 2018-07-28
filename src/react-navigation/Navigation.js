@@ -15,6 +15,7 @@ import ContextScreen from "../context/ContextScreen";
 import ConditionalScreen from "../conditional/Main";
 import HierarchyScreen from "../receiveProps/HierarchyScreen";
 import FormScreen from "../formik/FormScreen";
+import RNFormScreen from "../formik/RNFormScreen";
 import SideMenu from "../drawer/SideMenu";
 
 const MainStack = createStackNavigator({
@@ -50,6 +51,21 @@ const ImageStack = createStackNavigator({
 const FormStack = createStackNavigator({
   Form: {
     screen: FormScreen,
+    navigationOptions: ({ navigation }) => ({
+      title: "FORMIK",
+      headerStyle: {
+        backgroundColor: "yellow"
+      },
+      headerLeft: (
+        <Button title="OPEN" onPress={() => navigation.openDrawer()} />
+      )
+    })
+  }
+});
+
+const RNFormStack = createStackNavigator({
+  RNForm: {
+    screen: RNFormScreen,
     navigationOptions: ({ navigation }) => ({
       title: "FORMIK",
       headerStyle: {
@@ -161,6 +177,12 @@ export default createDrawerNavigator(
       screen: FormStack,
       navigationOptions: () => ({
         title: "FORM"
+      })
+    },
+    RNForm: {
+      screen: RNFormStack,
+      navigationOptions: () => ({
+        title: "REACT NATIVE FORM"
       })
     },
     Hierarchy: {
