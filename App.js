@@ -1,4 +1,19 @@
 import React, { Component } from "react";
+
+// Redux
+import { Provider } from "react-redux";
+import { configureStore } from "./src/redux/store/configureStore";
+
+const store = configureStore();
+
+// Firebase
+import "./src/firebase/firebaseApp";
+// React Navigation
+import Drawer from "./src/react-navigation/Navigation";
+// Utilities
+import { Toast } from "react-native-redux-toast";
+
+// Apollo-Graphql
 import { ApolloProvider } from "react-apollo";
 import gql from "graphql-tag";
 import { withClientState } from "apollo-link-state";
@@ -7,9 +22,6 @@ import { HttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { ApolloLink } from "apollo-link";
 import MyProvider from "./src/context/MyProvider";
-
-import "./src/firebase/firebaseApp";
-import Drawer from "./src/react-navigation/Navigation";
 
 const cache = new InMemoryCache();
 
@@ -74,9 +86,12 @@ class App extends Component {
   render() {
     return (
       <ApolloProvider client={client}>
-        <MyProvider>
-          <Drawer />
-        </MyProvider>
+        <Provider store={store}>
+          <MyProvider>
+            <Drawer />
+            <Toast messageStyle={{ color: "white" }} />
+          </MyProvider>
+        </Provider>
       </ApolloProvider>
     );
   }

@@ -1,11 +1,6 @@
 import React from "react";
-import { View, Text, Button } from "react-native";
-import {
-  createStackNavigator,
-  createDrawerNavigator,
-  NavigationActions
-} from "react-navigation";
-import { Foundation } from "@expo/vector-icons";
+import { Button } from "react-native";
+import { createStackNavigator, createDrawerNavigator } from "react-navigation";
 
 import MainScreen from "../_dir/MainScreen";
 import AboutScreen from "../_dir/AboutScreen";
