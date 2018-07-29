@@ -17,6 +17,8 @@ import NonStringScreen from "../non_string/NonStringScreen";
 import AnimationScreen from "../animation/AnimationScreen";
 import PaginationScreen from "../pagination/PaginationScreen";
 import PubSubScreen from "../pubsub/PubSubScreen";
+import FirebaseScreen from "../firebase/FirebaseScreen";
+import FirestoreScreen from "../firebase/FirestoreScreen";
 import SideMenu from "../drawer/SideMenu";
 
 const MainStack = createStackNavigator({
@@ -48,6 +50,37 @@ const ImageStack = createStackNavigator({
     })
   }
 });
+
+const FirebaseStack = createStackNavigator({
+  FB: {
+    screen: FirebaseScreen,
+    navigationOptions: ({ navigation }) => ({
+      title: "FIREBASE",
+      headerStyle: {
+        backgroundColor: "yellow"
+      },
+      headerLeft: (
+        <Button title="OPEN" onPress={() => navigation.openDrawer()} />
+      )
+    })
+  }
+});
+
+const FirestoreStack = createStackNavigator({
+  FS: {
+    screen: FirestoreScreen,
+    navigationOptions: ({ navigation }) => ({
+      title: "FIRESTORE",
+      headerStyle: {
+        backgroundColor: "yellow"
+      },
+      headerLeft: (
+        <Button title="OPEN" onPress={() => navigation.openDrawer()} />
+      )
+    })
+  }
+});
+
 const PaginationStack = createStackNavigator({
   Paginate: {
     screen: PaginationScreen,
@@ -292,6 +325,18 @@ export default createDrawerNavigator(
       screen: ConditionalStack,
       navigationOptions: () => ({
         title: "CONDITIONAL"
+      })
+    },
+    FB: {
+      screen: FirebaseStack,
+      navigationOptions: () => ({
+        title: "FIREBASE"
+      })
+    },
+    FS: {
+      screen: FirestoreStack,
+      navigationOptions: () => ({
+        title: "FIRESTORE"
       })
     },
     Image: {

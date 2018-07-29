@@ -44,6 +44,12 @@ class SideMenu extends Component {
               <Text style={menuItem} onPress={() => navigate("Conditional")}>
                 Conditional
               </Text>
+              <Text style={menuItem} onPress={() => navigate("FB")}>
+                Firebase
+              </Text>
+              <Text style={menuItem} onPress={() => navigate("FS")}>
+                Firestore
+              </Text>
 
               <Text style={menuItem} onPress={() => navigate("Image")}>
                 Image
@@ -81,12 +87,12 @@ const styles = StyleSheet.create({
     backgroundColor: "yellow"
   },
   menu: {
-    flex: 6,
+    flex: 10,
     paddingBottom: 10
   },
   footer: {
     flex: 1,
-    paddingTop: 20,
+    paddingTop: 10,
     backgroundColor: "white"
   },
   menuItem: {

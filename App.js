@@ -7,9 +7,11 @@ import { configureStore } from "./src/redux/store/configureStore";
 const store = configureStore();
 
 // Firebase
-import "./src/firebase/firebaseApp";
+import "./src/config/firebaseApp";
+
 // React Navigation
 import Drawer from "./src/react-navigation/Navigation";
+
 // Utilities
 import { Toast } from "react-native-redux-toast";
 
