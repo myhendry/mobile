@@ -7,6 +7,7 @@ import AboutScreen from "../_dir/AboutScreen";
 import StateScreen from "../apollo-link-state/StateScreen";
 import ContextScreen from "../context/ContextScreen";
 import ReduxScreen from "../redux/ReduxScreen";
+import Redux2Screen from "../redux/Redux2Screen";
 import ImageScreen from "../images/ImageScreen";
 import ConditionalScreen from "../conditional/Main";
 import HierarchyScreen from "../receiveProps/HierarchyScreen";
@@ -204,6 +205,18 @@ const ReduxStack = createStackNavigator({
         backgroundColor: "yellow"
       },
       headerLeft: (
+        <Button title="OPEN" onPress={() => navigation.openDrawer()} />
+      )
+    })
+  },
+  Redux2: {
+    screen: Redux2Screen,
+    navigationOptions: ({ navigation }) => ({
+      title: "REDUX",
+      headerStyle: {
+        backgroundColor: "yellow"
+      },
+      headerRight: (
         <Button title="OPEN" onPress={() => navigation.openDrawer()} />
       )
     })

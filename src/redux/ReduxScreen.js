@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Text, View, Button, StyleSheet } from "react-native";
+import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
+import { ToastActionsCreators } from "react-native-redux-toast";
 
 import { incrementCounter, decrementCounter } from "./actions/index";
 
@@ -10,7 +12,7 @@ class ReduxScreen extends Component {
   };
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     const { counter } = this.props.test;
     const { textStyle } = styles;
 
@@ -20,6 +22,10 @@ class ReduxScreen extends Component {
         <Button title="INCREMENT" onPress={this.props.incrementCounter} />
         <Button title="DECREMENT" onPress={this.props.decrementCounter} />
         <Button title="SHOW TOAST" onPress={this._displayInfoToast} />
+        <Button
+          title="NEXT"
+          onPress={() => this.props.navigation.navigate("Redux2")}
+        />
       </View>
     );
   }
@@ -32,6 +38,26 @@ const mapStateToProps = state => {
   };
 };
 
+// OK METHOD 1 - ADDING DISPATCH
+// const mapDispatchToProps = dispatch => {
+//   const actionCreators = bindActionCreators(
+//     {
+//       incrementCounter,
+//       decrementCounter
+//     },
+//     dispatch
+//   );
+//   return { ...actionCreators, dispatch };
+// };
+
+// OK METHOD 2 - ADDING DISPATCH
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatch,
+    ...bindActionCreators({ incrementCounter, decrementCounter }, dispatch)
+  };
+};
+
 const styles = StyleSheet.create({
   textStyle: {
     textAlign: "center",
@@ -41,5 +67,5 @@ const styles = StyleSheet.create({
 
 export default connect(
   mapStateToProps,
-  { incrementCounter, decrementCounter }
+  mapDispatchToProps
 )(ReduxScreen);
