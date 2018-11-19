@@ -19,6 +19,8 @@ import PaginationScreen from "../pagination/PaginationScreen";
 import PubSubScreen from "../pubsub/PubSubScreen";
 import FirebaseScreen from "../firebase/FirebaseScreen";
 import FirestoreScreen from "../firebase/FirestoreScreen";
+import WizardScreen from "../wizard/WizardScreen";
+import Wizard2Screen from "../wizard2/Wizard2Screen";
 import SideMenu from "../drawer/SideMenu";
 
 const MainStack = createStackNavigator({
@@ -41,6 +43,36 @@ const ImageStack = createStackNavigator({
     screen: ImageScreen,
     navigationOptions: ({ navigation }) => ({
       title: "IMAGE",
+      headerStyle: {
+        backgroundColor: "yellow"
+      },
+      headerLeft: (
+        <Button title="OPEN" onPress={() => navigation.openDrawer()} />
+      )
+    })
+  }
+});
+
+const WizardStack = createStackNavigator({
+  Wizard: {
+    screen: WizardScreen,
+    navigationOptions: ({ navigation }) => ({
+      title: "WIZARD",
+      headerStyle: {
+        backgroundColor: "yellow"
+      },
+      headerLeft: (
+        <Button title="OPEN" onPress={() => navigation.openDrawer()} />
+      )
+    })
+  }
+});
+
+const Wizard2Stack = createStackNavigator({
+  Wizard2: {
+    screen: Wizard2Screen,
+    navigationOptions: ({ navigation }) => ({
+      title: "WIZARD 2",
       headerStyle: {
         backgroundColor: "yellow"
       },
@@ -361,6 +393,18 @@ export default createDrawerNavigator(
       screen: PaginationStack,
       navigationOptions: () => ({
         title: "PAGINATION"
+      })
+    },
+    Wizard: {
+      screen: WizardStack,
+      navigationOptions: () => ({
+        title: "WIZARD FORM"
+      })
+    },
+    Wizard2: {
+      screen: Wizard2Stack,
+      navigationOptions: () => ({
+        title: "WIZARD FORM"
       })
     },
     About: {

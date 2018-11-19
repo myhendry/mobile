@@ -63,6 +63,12 @@ class SideMenu extends Component {
               <Text style={menuItem} onPress={() => navigate("Paginate")}>
                 Pagination
               </Text>
+              <Text style={menuItem} onPress={() => navigate("Wizard2")}>
+                Wizard 2
+              </Text>
+              <Text style={menuItem} onPress={() => navigate("Wizard")}>
+                Wizard
+              </Text>
             </View>
           </ScrollView>
         </View>
@@ -96,7 +102,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white"
   },
   menuItem: {
-    fontSize: 20,
+    fontSize: 16,
     padding: 10
   }
 });
