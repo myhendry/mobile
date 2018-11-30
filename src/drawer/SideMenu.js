@@ -1,8 +1,14 @@
 import React, { Component } from "react";
-import { NavigationActions } from "react-navigation";
-import { ScrollView, View, Text, StyleSheet } from "react-native";
+import NavigationService from "../react-navigation/NavigationService";
+import { ScrollView, View, Text, AsyncStorage, StyleSheet } from "react-native";
 
 class SideMenu extends Component {
+  signOut = async () => {
+    NavigationService.navigate("Auth");
+    await AsyncStorage.clear();
+    await this.props.client.resetStore();
+  };
+
   render() {
     const { header, menu, menuItem, container, footer } = styles;
     const { navigate } = this.props.navigation;
@@ -76,8 +82,8 @@ class SideMenu extends Component {
           </ScrollView>
         </View>
         <View style={footer}>
-          <Text style={menuItem} onPress={() => navigate("About")}>
-            About
+          <Text style={menuItem} onPress={this.signOut}>
+            Log Out
           </Text>
         </View>
       </View>

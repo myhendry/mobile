@@ -10,7 +10,7 @@ const store = configureStore();
 import "./src/config/firebaseApp";
 
 // React Navigation
-import Drawer from "./src/react-navigation/Navigation";
+import AppNavigator from "./src/react-navigation/AppNavigator";
 
 // Utilities
 import { Toast } from "react-native-redux-toast";
@@ -18,63 +18,9 @@ import { Toast } from "react-native-redux-toast";
 // Apollo-Graphql
 import { ApolloProvider } from "react-apollo";
 
+import NavigationService from "./src/react-navigation/NavigationService";
 import MyProvider from "./src/context/MyProvider";
 import { client } from "./apollo";
-
-// const cache = new InMemoryCache();
-
-// const defaultState = {
-//   currentGame: {
-//     __typename: "currentGame",
-//     teamAScore: 0,
-//     teamBScore: 0,
-//     teamAName: "EAGLES",
-//     teamBName: "LOL"
-//   }
-// };
-
-// const stateLink = withClientState({
-//   cache,
-//   defaults: defaultState,
-//   resolvers: {
-//     Mutation: {
-//       updateGame: (_, { index, value }, { cache }) => {
-//         const query = gql`
-//           query GetCurrentGame {
-//             currentGame @client {
-//               teamAScore
-//               teamBScore
-//               teamAName
-//               teamBName
-//             }
-//           }
-//         `;
-//         const previous = cache.readQuery({ query });
-//         const data = {
-//           currentGame: {
-//             ...previous.currentGame,
-//             [index]: value
-//           }
-//         };
-//         cache.writeQuery({ query, data });
-//         return null;
-//       },
-//       resetCurrentGame: (_, d, { cache }) => {
-//         cache.writeData({ data: defaultState });
-//       }
-//     }
-//   }
-// });
-
-// const client = new ApolloClient({
-//   link: ApolloLink.from([
-//     stateLink,
-//     new HttpLink({
-//       uri: "https://api.graph.cool/simple/v1/cje02rqk51iwi0160gb0kgx0p"
-//     })
-//   ]),
-//   cache
-// });
 
 class App extends Component {
   constructor(props) {
@@ -86,7 +32,11 @@ class App extends Component {
       <ApolloProvider client={client}>
         <Provider store={store}>
           <MyProvider>
-            <Drawer />
+            <AppNavigator
+              ref={navigatorRef => {
+                NavigationService.setTopLevelNavigator(navigatorRef);
+              }}
+            />
             <Toast messageStyle={{ color: "white" }} />
           </MyProvider>
         </Provider>

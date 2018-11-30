@@ -2,6 +2,9 @@ import React from "react";
 import { Button } from "react-native";
 import { createStackNavigator, createDrawerNavigator } from "react-navigation";
 
+import AuthScreen from "../auth/AuthScreen";
+import EmailSigninScreen from "../auth/EmailSigninScreen";
+import EmailSignupScreen from "../auth/EmailSignupScreen";
 import MainScreen from "../_dir/MainScreen";
 import AboutScreen from "../_dir/AboutScreen";
 import StateScreen from "../apollo-link-state/StateScreen";
@@ -23,6 +26,12 @@ import FirestoreScreen from "../firebase/FirestoreScreen";
 import PagingScreen from "../paging/PagingScreen";
 import WizardScreen from "../wizard/WizardScreen";
 import SideMenu from "../drawer/SideMenu";
+
+export const AuthStack = createStackNavigator({
+  Auth: AuthScreen,
+  EmailSignup: EmailSignupScreen,
+  EmailSignin: EmailSigninScreen
+});
 
 const MainStack = createStackNavigator({
   Main: {
