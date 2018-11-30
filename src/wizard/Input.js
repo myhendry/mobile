@@ -15,8 +15,13 @@ class Input extends PureComponent {
     this.props.onTouch(this.props.name);
   };
 
+  _test = value => {
+    console.log(value);
+  };
+
   render() {
     const { root } = styles;
+    console.log("Input props ", this.props);
     const { placeholder, error, ...rest } = this.props;
 
     return (

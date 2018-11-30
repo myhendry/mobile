@@ -9,6 +9,7 @@ import ContextScreen from "../context/ContextScreen";
 import ReduxScreen from "../redux/ReduxScreen";
 import Redux2Screen from "../redux/Redux2Screen";
 import ImageScreen from "../images/ImageScreen";
+import ApolloUploadScreen from "../images/ApolloUploadScreen";
 import ConditionalScreen from "../conditional/Main";
 import HierarchyScreen from "../receiveProps/HierarchyScreen";
 import FormScreen from "../formik/FormScreen";
@@ -19,8 +20,8 @@ import PaginationScreen from "../pagination/PaginationScreen";
 import PubSubScreen from "../pubsub/PubSubScreen";
 import FirebaseScreen from "../firebase/FirebaseScreen";
 import FirestoreScreen from "../firebase/FirestoreScreen";
+import PagingScreen from "../paging/PagingScreen";
 import WizardScreen from "../wizard/WizardScreen";
-import Wizard2Screen from "../wizard2/Wizard2Screen";
 import SideMenu from "../drawer/SideMenu";
 
 const MainStack = createStackNavigator({
@@ -53,11 +54,11 @@ const ImageStack = createStackNavigator({
   }
 });
 
-const WizardStack = createStackNavigator({
-  Wizard: {
-    screen: WizardScreen,
+const ApolloUploadStack = createStackNavigator({
+  ApolloImage: {
+    screen: ApolloUploadScreen,
     navigationOptions: ({ navigation }) => ({
-      title: "WIZARD",
+      title: "UPLOAD",
       headerStyle: {
         backgroundColor: "yellow"
       },
@@ -68,11 +69,26 @@ const WizardStack = createStackNavigator({
   }
 });
 
-const Wizard2Stack = createStackNavigator({
-  Wizard2: {
-    screen: Wizard2Screen,
+const PagingStack = createStackNavigator({
+  Wizard: {
+    screen: PagingScreen,
     navigationOptions: ({ navigation }) => ({
-      title: "WIZARD 2",
+      title: "PAGING",
+      headerStyle: {
+        backgroundColor: "yellow"
+      },
+      headerLeft: (
+        <Button title="OPEN" onPress={() => navigation.openDrawer()} />
+      )
+    })
+  }
+});
+
+const WizardStack = createStackNavigator({
+  Wizard: {
+    screen: WizardScreen,
+    navigationOptions: ({ navigation }) => ({
+      title: "WIZARD FORM",
       headerStyle: {
         backgroundColor: "yellow"
       },
@@ -377,6 +393,12 @@ export default createDrawerNavigator(
         title: "IMAGE"
       })
     },
+    ApolloUpload: {
+      screen: ApolloUploadStack,
+      navigationOptions: () => ({
+        title: "UPLOAD"
+      })
+    },
     Anime: {
       screen: AnimationStack,
       navigationOptions: () => ({
@@ -395,14 +417,14 @@ export default createDrawerNavigator(
         title: "PAGINATION"
       })
     },
-    Wizard: {
-      screen: WizardStack,
+    Paging: {
+      screen: PagingStack,
       navigationOptions: () => ({
-        title: "WIZARD FORM"
+        title: "PAGING"
       })
     },
-    Wizard2: {
-      screen: Wizard2Stack,
+    Wizard: {
+      screen: WizardStack,
       navigationOptions: () => ({
         title: "WIZARD FORM"
       })

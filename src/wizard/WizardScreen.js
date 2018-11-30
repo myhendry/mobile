@@ -1,80 +1,83 @@
 import React, { Component } from "react";
 import { View, TextInput, StyleSheet } from "react-native";
-import { Button } from "react-native-elements";
-import { Formik } from "formik";
 
 import Input from "./Input";
-import { Page1 } from "./Page1";
-import { Page2 } from "./Page2";
-import { Page3 } from "./Page3";
+import Wizard from "./Wizard";
 
-const pages = [<Page1 />, <Page2 />, <Page3 />];
 class WizardScreen extends Component {
-  state = {
-    page: 0
-  };
-
-  _handleSubmit = async (values, bag) => {
-    try {
-      console.log(values);
-    } catch (error) {
-      bag.setSubmitting(false);
-      bag.setErrors(error);
-    }
-  };
-
-  _nextPage = () => {
-    this.setState(state => ({ page: state.page + 1 }));
-  };
-
   render() {
-    const { container, buttonStyle } = styles;
-
+    console.log("Screen Props ", this.props);
     return (
-      <Formik
-        initialValues={{ name: "", email: "", info: "" }}
-        onSubmit={values => console.log(values)}
-      >
-        {props => (
-          <View style={container}>
-            {pages[this.state.page]}
-            <TextInput
-              placeholder="Input"
-              onChangeText={props.handleChange("email")}
-              onBlur={props.handleBlur("email")}
-              value={props.values.email}
-            />
-            {this.state.page === pages.length - 1 ? (
-              <Button
-                style={buttonStyle}
-                onPress={props.handleSubmit}
-                title="Submit"
-              />
-            ) : (
-              <Button
-                title="Next Page"
-                style={buttonStyle}
-                onPress={this._nextPage}
-              />
+      <View style={{ flex: 1 }}>
+        <Wizard
+          initialValues={{
+            name: "Ali",
+            email: "",
+            nickName: "",
+            location: ""
+          }}
+        >
+          <Wizard.Step>
+            {({ formikProps }) => (
+              <View style={styles.card}>
+                <Input
+                  name="location"
+                  autoCapitalize="none"
+                  autoComplete="none"
+                  placeholder="Location"
+                  onChange={formikProps.setFieldValue}
+                  onTouch={formikProps.setFieldTouched}
+                  value={formikProps.values.location}
+                  error={
+                    formikProps.touched.location && formikProps.errors.location
+                  }
+                />
+              </View>
             )}
-          </View>
-        )}
-      </Formik>
+          </Wizard.Step>
+          <Wizard.Step>
+            {({ formikProps }) => (
+              <View style={styles.card}>
+                <TextInput
+                  placeholder="Name"
+                  onChangeText={formikProps.handleChange("name")}
+                  onBlur={formikProps.handleBlur("name")}
+                  value={formikProps.values.name}
+                />
+                <TextInput
+                  placeholder="Nickname"
+                  onChangeText={formikProps.handleChange("nickName")}
+                  onBlur={formikProps.handleBlur("nickName")}
+                  value={formikProps.values.nickName}
+                />
+              </View>
+            )}
+          </Wizard.Step>
+          <Wizard.Step>
+            {({ formikProps }) => (
+              <View style={styles.card}>
+                <TextInput
+                  placeholder="Email"
+                  onChangeText={formikProps.handleChange("email")}
+                  onBlur={formikProps.handleBlur("email")}
+                  value={formikProps.values.email}
+                />
+              </View>
+            )}
+          </Wizard.Step>
+        </Wizard>
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
+  card: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
     justifyContent: "center"
   },
-  buttonStyle: {
-    marginTop: 20,
-    width: "100%"
-  }
+
+  input: {}
 });
 
 export default WizardScreen;

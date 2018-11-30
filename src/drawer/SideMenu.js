@@ -54,6 +54,9 @@ class SideMenu extends Component {
               <Text style={menuItem} onPress={() => navigate("Image")}>
                 Image
               </Text>
+              <Text style={menuItem} onPress={() => navigate("ApolloUpload")}>
+                Upload
+              </Text>
               <Text style={menuItem} onPress={() => navigate("Anime")}>
                 Animation
               </Text>
@@ -63,11 +66,11 @@ class SideMenu extends Component {
               <Text style={menuItem} onPress={() => navigate("Paginate")}>
                 Pagination
               </Text>
-              <Text style={menuItem} onPress={() => navigate("Wizard2")}>
-                Wizard 2
-              </Text>
               <Text style={menuItem} onPress={() => navigate("Wizard")}>
                 Wizard
+              </Text>
+              <Text style={menuItem} onPress={() => navigate("Paging")}>
+                Paging
               </Text>
             </View>
           </ScrollView>
@@ -88,22 +91,22 @@ const styles = StyleSheet.create({
     backgroundColor: "yellow"
   },
   header: {
-    flex: 1,
+    flex: 0.5,
     zIndex: 2000,
     backgroundColor: "yellow"
   },
   menu: {
-    flex: 10,
-    paddingBottom: 10
+    flex: 12,
+    paddingBottom: 8
   },
   footer: {
-    flex: 1,
-    paddingTop: 10,
+    flex: 0.5,
+    paddingTop: 8,
     backgroundColor: "white"
   },
   menuItem: {
-    fontSize: 16,
-    padding: 10
+    fontSize: 12,
+    padding: 8
   }
 });
 
