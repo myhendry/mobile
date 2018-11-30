@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Text, View, TextInput, Button } from "react-native";
+import { fs } from "../config/firebaseApp";
 
 class Firestore2Screen extends Component {
   state = {
@@ -9,10 +10,18 @@ class Firestore2Screen extends Component {
     size: "medium"
   };
 
-  _handleSubmit = () => {
+  _handleSubmit = async () => {
     const { name, country, description, size } = this.state;
 
-    console.log(name, country, description, size);
+    try {
+      await fs
+        .collection("employees")
+        .add({ name, country, description, size });
+
+      this.props.navigation.navigate("FS");
+    } catch (error) {
+      throw error;
+    }
   };
 
   render() {
