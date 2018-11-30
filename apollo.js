@@ -64,6 +64,14 @@ const httpLink = createUploadLink({
   credentials: "same-origin"
 });
 
+// wsLink
+const wsLink = new WebSocketLink({
+  uri: `ws://localhost:4000/`,
+  options: {
+    reconnect: true
+  }
+});
+
 // authMiddleware
 const authLink = setContext(async (req, { headers }) => {
   const token = await AsyncStorage.getItem("@token");
@@ -74,14 +82,6 @@ const authLink = setContext(async (req, { headers }) => {
       authorization: token ? `${token}` : ""
     }
   };
-});
-
-// wsLink
-const wsLink = new WebSocketLink({
-  uri: `ws://localhost:4000/`,
-  options: {
-    reconnect: true
-  }
 });
 
 // using the ability to split links, you can send data to each link

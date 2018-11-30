@@ -22,7 +22,9 @@ import AnimationScreen from "../animation/AnimationScreen";
 import PaginationScreen from "../pagination/PaginationScreen";
 import PubSubScreen from "../pubsub/PubSubScreen";
 import FirebaseScreen from "../firebase/FirebaseScreen";
+import Firebase2Screen from "../firebase/Firebase2Screen";
 import FirestoreScreen from "../firebase/FirestoreScreen";
+import Firestore2Screen from "../firebase/Firestore2Screen";
 import PagingScreen from "../paging/PagingScreen";
 import WizardScreen from "../wizard/WizardScreen";
 import SideMenu from "../drawer/SideMenu";
@@ -120,6 +122,9 @@ const FirebaseStack = createStackNavigator({
         <Button title="OPEN" onPress={() => navigation.openDrawer()} />
       )
     })
+  },
+  FB2: {
+    screen: Firebase2Screen
   }
 });
 
@@ -135,6 +140,9 @@ const FirestoreStack = createStackNavigator({
         <Button title="OPEN" onPress={() => navigation.openDrawer()} />
       )
     })
+  },
+  FS2: {
+    screen: Firestore2Screen
   }
 });
 
