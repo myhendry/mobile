@@ -19,6 +19,11 @@ import FormScreen from "../formik/FormScreen";
 import RNFormScreen from "../formik/RNFormScreen";
 import NonStringScreen from "../non_string/NonStringScreen";
 import AnimationScreen from "../animation/AnimationScreen";
+import Animation1Screen from "../animation/Animation1Screen";
+import Animation2Screen from "../animation/Animation2Screen";
+import Animation3Screen from "../animation/Animation3Screen";
+import Animation4Screen from "../animation/Animation4Screen";
+import Animation5Screen from "../animation/Animation5Screen";
 import PaginationScreen from "../pagination/PaginationScreen";
 import PubSubScreen from "../pubsub/PubSubScreen";
 import FirebaseScreen from "../firebase/FirebaseScreen";
@@ -27,6 +32,11 @@ import FirestoreScreen from "../firebase/FirestoreScreen";
 import Firestore2Screen from "../firebase/Firestore2Screen";
 import PagingScreen from "../paging/PagingScreen";
 import WizardScreen from "../wizard/WizardScreen";
+import renderPropsScreen from "../renderProps/renderPropsScreen";
+import rpChildren from "../renderProps/rpChildren";
+import rpRender from "../renderProps/rpRender";
+import hocScreen from "../hoc/hocScreen";
+import hoc from "../hoc/hoc";
 import SideMenu from "../drawer/SideMenu";
 
 export const AuthStack = createStackNavigator({
@@ -186,6 +196,21 @@ const AnimationStack = createStackNavigator({
         <Button title="OPEN" onPress={() => navigation.openDrawer()} />
       )
     })
+  },
+  Anime1: {
+    screen: Animation1Screen
+  },
+  Anime2: {
+    screen: Animation2Screen
+  },
+  Anime3: {
+    screen: Animation3Screen
+  },
+  Anime4: {
+    screen: Animation4Screen
+  },
+  Anime5: {
+    screen: Animation5Screen
   }
 });
 
@@ -321,6 +346,45 @@ const ReduxStack = createStackNavigator({
   }
 });
 
+const RenderPropsStack = createStackNavigator({
+  RP: {
+    screen: renderPropsScreen,
+    navigationOptions: ({ navigation }) => ({
+      title: "RENDER PROPS",
+      headerStyle: {
+        backgroundColor: "yellow"
+      },
+      headerLeft: (
+        <Button title="OPEN" onPress={() => navigation.openDrawer()} />
+      )
+    })
+  },
+  RPR: {
+    screen: rpRender
+  },
+  RPC: {
+    screen: rpChildren
+  }
+});
+
+const HOCStack = createStackNavigator({
+  HOC: {
+    screen: hocScreen,
+    navigationOptions: ({ navigation }) => ({
+      title: "HOC",
+      headerStyle: {
+        backgroundColor: "yellow"
+      },
+      headerLeft: (
+        <Button title="OPEN" onPress={() => navigation.openDrawer()} />
+      )
+    })
+  },
+  HOCP: {
+    screen: hoc
+  }
+});
+
 const AboutStack = createStackNavigator({
   About: {
     screen: AboutScreen,
@@ -444,6 +508,18 @@ export default createDrawerNavigator(
       screen: WizardStack,
       navigationOptions: () => ({
         title: "WIZARD FORM"
+      })
+    },
+    RPS: {
+      screen: RenderPropsStack,
+      navigationOptions: () => ({
+        title: "RENDER PROPS"
+      })
+    },
+    HOCS: {
+      screen: HOCStack,
+      navigationOptions: () => ({
+        title: "HOC"
       })
     },
     About: {

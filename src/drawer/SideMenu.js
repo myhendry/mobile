@@ -42,7 +42,7 @@ class SideMenu extends Component {
                 Form
               </Text>
               <Text style={menuItem} onPress={() => navigate("RNForm")}>
-                React Native Form
+                Formik
               </Text>
               <Text style={menuItem} onPress={() => navigate("NonString")}>
                 Non String
@@ -78,6 +78,12 @@ class SideMenu extends Component {
               <Text style={menuItem} onPress={() => navigate("Paging")}>
                 Paging
               </Text>
+              <Text style={menuItem} onPress={() => navigate("HOC")}>
+                HOC
+              </Text>
+              <Text style={menuItem} onPress={() => navigate("RP")}>
+                Render Props
+              </Text>
             </View>
           </ScrollView>
         </View>
@@ -112,7 +118,7 @@ const styles = StyleSheet.create({
   },
   menuItem: {
     fontSize: 12,
-    padding: 8
+    padding: 5
   }
 });
 

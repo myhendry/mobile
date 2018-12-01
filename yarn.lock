@@ -456,6 +456,14 @@
     pirates "^3.0.1"
     source-map-support "^0.4.2"
 
+"@babel/runtime@7.0.0-beta.51":
+  version "7.0.0-beta.51"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.0.0-beta.51.tgz#48b8ed18307034c6620f643514650ca2ccc0165a"
+  integrity sha1-SLjtGDBwNMZiD2Q1FGUMoszAFlo=
+  dependencies:
+    core-js "^2.5.7"
+    regenerator-runtime "^0.11.1"
+
 "@babel/runtime@^7.0.0-beta.47":
   version "7.0.0-beta.54"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.0.0-beta.54.tgz#39ebb42723fe7ca4b3e1b00e967e80138d47cadf"
@@ -7330,6 +7338,13 @@ react-redux@^5.0.2, react-redux@^5.0.7:
     loose-envify "^1.1.0"
     prop-types "^15.6.0"
 
+react-spring@5.4.0:
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-5.4.0.tgz#4989b10dd0fac20a14f43ef3de78fabec705f832"
+  integrity sha512-Ws5+L4x/M9C1yVR6BNzf96er8yO/7euGS1Uv11fMoVDdS6/SgX0JeNszJo7o6maG+v7VxoIbvhyG3wVW8wQZFQ==
+  dependencies:
+    "@babel/runtime" "7.0.0-beta.51"
+
 react-test-renderer@16.3.1:
   version "16.3.1"
   resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-16.3.1.tgz#d9257936d8535bd40f57f3d5a84e7b0452fb17f2"
@@ -7515,7 +7530,7 @@ regenerator-runtime@^0.10.0, regenerator-runtime@^0.10.5:
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.10.5.tgz#336c3efc1220adcedda2c9fab67b5a7955a33658"
   integrity sha1-M2w+/BIgrc7dosn6tntaeVWjNlg=
 
-regenerator-runtime@^0.11.0:
+regenerator-runtime@^0.11.0, regenerator-runtime@^0.11.1:
   version "0.11.1"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
   integrity sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==
