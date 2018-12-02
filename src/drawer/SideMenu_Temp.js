@@ -14,10 +14,14 @@ class SideMenu extends Component {
     const { navigate } = this.props.navigation;
 
     return (
-      <View style={container}>
+      <View style={{ flex: 1 }}>
         <View style={header} />
         <View style={{ flex: 9 }}>
-          <ScrollView overScrollMode="never" bounces={false}>
+          <ScrollView
+            contentContainerStyle={container}
+            overScrollMode="never"
+            bounces={false}
+          >
             <View style={menu}>
               <Text style={menuItem} onPress={() => navigate("Main")}>
                 Main
@@ -64,12 +68,6 @@ class SideMenu extends Component {
               </Text>
               <Text style={menuItem} onPress={() => navigate("MyPubSub")}>
                 Pubsub
-              </Text>
-              <Text style={menuItem} onPress={() => navigate("Sockets")}>
-                Sockets
-              </Text>
-              <Text style={menuItem} onPress={() => navigate("Optimistic")}>
-                Optimistic UI
               </Text>
               <Text style={menuItem} onPress={() => navigate("Paginate")}>
                 Pagination
@@ -119,7 +117,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white"
   },
   menuItem: {
-    fontSize: 13,
+    fontSize: 12,
     padding: 5
   }
 });

@@ -24,6 +24,10 @@ import Animation2Screen from "../animation/Animation2Screen";
 import Animation3Screen from "../animation/Animation3Screen";
 import Animation4Screen from "../animation/Animation4Screen";
 import Animation5Screen from "../animation/Animation5Screen";
+import SocketScreen from "../sockets/SocketScreen";
+import Socket2Screen from "../sockets/Socket2Screen";
+import OptimisticScreen from "../optimistic_ui/OptimisticScreen";
+import Optimistic2Screen from "../optimistic_ui/Optimistic2Screen";
 import PaginationScreen from "../pagination/PaginationScreen";
 import PubSubScreen from "../pubsub/PubSubScreen";
 import FirebaseScreen from "../firebase/FirebaseScreen";
@@ -156,6 +160,42 @@ const FirestoreStack = createStackNavigator({
   }
 });
 
+const SocketStack = createStackNavigator({
+  SOC: {
+    screen: SocketScreen,
+    navigationOptions: ({ navigation }) => ({
+      title: "SOCKETS",
+      headerStyle: {
+        backgroundColor: "yellow"
+      },
+      headerLeft: (
+        <Button title="OPEN" onPress={() => navigation.openDrawer()} />
+      )
+    })
+  },
+  SOC2: {
+    screen: Socket2Screen
+  }
+});
+
+const OptimisticStack = createStackNavigator({
+  OUI: {
+    screen: OptimisticScreen,
+    navigationOptions: ({ navigation }) => ({
+      title: "OPTIMISTIC UI",
+      headerStyle: {
+        backgroundColor: "yellow"
+      },
+      headerLeft: (
+        <Button title="OPEN" onPress={() => navigation.openDrawer()} />
+      )
+    })
+  },
+  OUI2: {
+    screen: Optimistic2Screen
+  }
+});
+
 const PaginationStack = createStackNavigator({
   Paginate: {
     screen: PaginationScreen,
@@ -170,6 +210,7 @@ const PaginationStack = createStackNavigator({
     })
   }
 });
+
 const PubSubStack = createStackNavigator({
   MyPubSub: {
     screen: PubSubScreen,
@@ -466,6 +507,18 @@ export default createDrawerNavigator(
       screen: FirestoreStack,
       navigationOptions: () => ({
         title: "FIRESTORE"
+      })
+    },
+    Sockets: {
+      screen: SocketStack,
+      navigationOptions: () => ({
+        title: "SOCKETS"
+      })
+    },
+    Optimistic: {
+      screen: OptimisticStack,
+      navigationOptions: () => ({
+        title: "OPTIMISTIC"
       })
     },
     Image: {
